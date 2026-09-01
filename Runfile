@@ -1,0 +1,8 @@
+build: # build dry_doc
+  mix compile --force
+
+docs: build # build docs site
+  mix docs
+
+read: docs # open the docs site after building
+  open doc/index.html
