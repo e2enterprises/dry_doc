@@ -48,15 +48,15 @@ end
 # B. Call directly:
 
 defmodule YourModule do
-  @moduledoc DryDoc.from_readme(__ENV__)
+  @moduledoc DryDoc.from_readme(YourModule)
 
-  @doc DryDoc.from_readme(__ENV__, :your_func)
+  @doc DryDoc.from_readme(YourModule, :your_func)
 
   def your_func() do
     ...
   end
 
-  @doc DryDoc.from_file("SOME_OTHER_FILE.md", __ENV__, :your_other_func)
+  @doc DryDoc.from_file("SOME_OTHER_FILE.md", YourModule, :your_other_func)
 
   def your_other_func() do
     ...
