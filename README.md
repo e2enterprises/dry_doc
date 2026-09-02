@@ -15,7 +15,7 @@ Add `dry_doc` to your list of dependencies in `mix.exs`, then run `mix deps.get`
 ```elixir
 def deps do
   [
-    {:dry_doc, "~> 0.1.0"}
+    {:dry_doc, "~> 0.1.1"}
   ]
 end
 ```

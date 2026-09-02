@@ -2,7 +2,7 @@ defmodule DryDoc.MixProject do
   use Mix.Project
 
   @name "DryDoc"
-  @version "0.1.0"
+  @version "0.1.1"
   @repository "https://github.com/e2enterprises/dry_doc"
 
   defp description() do
