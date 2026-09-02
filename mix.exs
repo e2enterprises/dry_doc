@@ -2,11 +2,11 @@ defmodule DryDoc.MixProject do
   use Mix.Project
 
   @name "DryDoc"
-  @version "0.1.1"
+  @version "0.1.0"
   @repository "https://github.com/e2enterprises/dry_doc"
 
   defp description() do
-    "Colocated, Scoped, Formatted, Ergonomic. Intermix JS, CSS & Phoenix components without limits."
+    "Docs without repeating yourself."
   end
 
   def project do
@@ -36,8 +36,8 @@ defmodule DryDoc.MixProject do
   defp docs() do
     [
       main: DryDoc,
-      before_closing_head_tag: &before_closing_head_tag/1,
-      before_closing_body_tag: &before_closing_body_tag/1
+      before_closing_head_tag: &DryDoc.before_closing_head_tag_hide_pages_tab/1,
+      before_closing_body_tag: &DryDoc.before_closing_body_tag_expand_sections_list/1
     ]
   end
 
@@ -51,53 +51,5 @@ defmodule DryDoc.MixProject do
 
   def application do
     []
-  end
-
-  defp before_closing_head_tag(:epub), do: nil
-
-  defp before_closing_head_tag(:html) do
-    # Because we have no "extras" in the Pages section, hide this tab for clarity:
-    """
-    <style>
-      #extras-list-tab-button { display: none; }
-    </style>
-    """
-  end
-
-  defp before_closing_body_tag(:epub), do: nil
-
-  defp before_closing_body_tag(:html) do
-    # Automatically expand the "Sections" list in the sidebar for visibility.
-    # Expand during page load, and also any time the sidebar is opened (for mobile).
-    """
-    <script>
-      function expandSections() {
-        const selector = 'button[aria-controls="DryDoc-sections-list"]';
-        const sectionsToggle = document.querySelector(selector);
-        if (sectionsToggle && sectionsToggle.getAttribute("aria-expanded") !== "true") {
-          sectionsToggle.click();
-        }
-      }
-      function expandSectionsWhenSidebarOpens() {
-        const sidebarToggle = document.querySelector('button#sidebar-menu');
-        if (sidebarToggle && window.MutationObserver !== undefined) {
-          new MutationObserver(function (mutationList) {
-            for (const mutation of mutationList) {
-              if (mutation.type === "attributes"
-                && mutation.attributeName === "aria-expanded"
-                && mutation.target.getAttribute("aria-epanded") === "true"
-              ) {
-                expandSections();
-              }
-            }
-          }).observe(sidebarToggle, { attributes: true });
-        }
-      }
-      addEventListener("DOMContentLoaded", function () {
-        requestAnimationFrame(expandSections); // wait for full sidebar render
-        requestAnimationFrame(expandSectionsWhenSidebarOpens);
-      });
-    </script>
-    """
   end
 end
