@@ -71,19 +71,19 @@ feel familiar to anyone who's written HTML.
 ```markdown
 # Welcome to my README
 
-<!-- YourModule -->
+<!-- @moduledoc YourModule -->
 
 Only include this content in my @moduledoc.
 
-<!-- /YourModule -->
+<!-- /@moduledoc YourModule -->
 
 Not this content.
 
-<!-- YourModule -->
+<!-- @moduledoc YourModule -->
 
 Oh, actually put this content in @moduledoc too.
 
-<!-- /YourModule -->
+<!-- /@moduledoc YourModule -->
 
 Bye!
 ```
@@ -93,11 +93,11 @@ For function docs, add function name after module in the annotations:
 ```markdown
 # Welcome to my README
 
-<!-- YourModule.your_func -->
+<!-- @doc YourModule.your_func -->
 
 This content is for the @doc of the YourModule.your_func function.
 
-<!-- /YourModule.your_func -->
+<!-- /@doc YourModule.your_func -->
 ```
 
 ## Extras
