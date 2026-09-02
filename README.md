@@ -48,9 +48,9 @@ end
 # B. Call directly:
 
 defmodule YourModule do
-  @moduledoc DryDoc.from_readme(YourModule)
+  @moduledoc YourModule |> DryDoc.from_readme()
 
-  @doc DryDoc.from_readme(YourModule, :your_func)
+  @doc YourModule |> DryDoc.from_readme(:your_func)
 
   def your_func() do
     ...
