@@ -1,5 +1,6 @@
 defmodule DryDoc do
   @moduledoc DryDoc.Reader.read("README.md", "DryDoc")
+             |> DryDoc.Transformations.github_admonitions_to_ex_doc_syntax()
 
   defmacro doc_from_readme(function \\ nil) do
     module = __CALLER__.module
@@ -44,6 +45,7 @@ defmodule DryDoc do
       end
 
     DryDoc.Reader.read(file_path, annotation_label)
+    |> DryDoc.Transformations.github_admonitions_to_ex_doc_syntax()
   end
 
   def before_closing_head_tag_hide_pages_tab(:epub), do: nil

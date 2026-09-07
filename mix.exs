@@ -2,7 +2,7 @@ defmodule DryDoc.MixProject do
   use Mix.Project
 
   @name "DryDoc"
-  @version "0.1.1"
+  @version "0.1.2"
   @repository "https://github.com/e2enterprises/dry_doc"
 
   defp description() do
@@ -14,7 +14,7 @@ defmodule DryDoc.MixProject do
       app: :dry_doc,
       description: description(),
       version: @version,
-      elixir: "~> 1.20",
+      elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       package: package(),
       deps: deps(),
